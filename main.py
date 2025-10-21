@@ -7,11 +7,12 @@ import httpx
 import discord
 import aiohttp
 from discord import commands
+from threading import Thread
+from flask import Flask
 
-
-
+# * THIS SCRIPT WILL ALSO BYPASS ANY INTERUPTIONS WITH CONNECTIONS
 # * YOU ARE ALLOWED TO MODIFY THIS SCRIPT AS YOU LIKE
-# * TARGET COPIER SCRIPT
+# * TARGET MIMIC SCRIPT
 # * TO GET SELF BOT IMPORT DO 'pip uninstall discord' AND INSTALL 'pip install git+https://github.com/dolfies/discord.py-self.git'
 
 __config__ = {
@@ -27,6 +28,22 @@ __config__ = {
         "shared_guildids": {}
     },
 }
+
+# +++ Threading to keep the self bot script up 24/7
+# +++ Make sure you go through render and upload this as ur own repos on github before running it
+# +++ Contact the creator for any errors or just manually fix it, i tried to make this as easy as it is for you to optimize and add fetures to
+
+app = Flask("")
+
+@app.route("/")
+def home():
+    return f"running smoothly |"
+
+def run_server():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
+Thread(target=run_server).start()
 
 monitering = None
 server_monitering = None
@@ -44,20 +61,13 @@ if activator == True:
     monitering = presetid
 
 public_guilds = { # * Guilds to check if there in one of them | Logic is missing and this will require a captcha bypasser for discord. or a api of some sort
-    "https://discord.gg/marvelrivals",
-    "https://discord.gg/midjourney",
-    "https://discord.gg/genshinimpact",
-    "https://discord.gg/roblox",
-    "https://discord.gg/rodevs",
-    "https://discord.gg/minecraft",
-    "https://discord.gg/fortnite",
-    "https://discord.gg/tkfortnite",
-    "https://discord.gg/ecafe",
-    "https://discord.gg/yumm",
-    "https://discord.gg/socialz",
-    "https://discord.gg/maba",
-    "https://discord.com/32TwwtZFjW",
-    "https://discord.com/ntts",
+    "https://discord.gg/marvelrivals","https://discord.gg/midjourney",
+    "https://discord.gg/genshinimpact","https://discord.gg/roblox",
+    "https://discord.gg/rodevs","https://discord.gg/minecraft",
+    "https://discord.gg/fortnite","https://discord.gg/tkfortnite",
+    "https://discord.gg/ecafe","https://discord.gg/yumm",
+    "https://discord.gg/socialz","https://discord.gg/maba",
+    "https://discord.com/32TwwtZFjW","https://discord.com/ntts",
     "https://discord.com/finalstand"
 }
 
